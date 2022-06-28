@@ -1,0 +1,28 @@
+{
+    "name": "esyede/bni-php",
+    "description": "Unofficial integration library for BNI E-Collection (bni.co.id)",
+    "type": "library",
+    "require": {
+        "php": ">=5.6.0",
+        "ext-curl": "*",
+        "ext-json": "*"
+    },
+    "license": "MIT",
+    "homepage": "https://github.com/esyede/bni-php",
+    "support": {
+        "issues": "https://github.com/esyede/bni-php/issues",
+        "source": "https://github.com/esyede/bni-php"
+    },
+    "authors": [
+        {
+            "name": "Esyede",
+            "email": "suyadi.1992@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "Esyede\\BNI\\": "src/"
+        }
+    }
+}
