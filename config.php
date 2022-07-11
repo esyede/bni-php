@@ -2,8 +2,9 @@
 
 return [
     'environment' => 'development', // 'development' atau 'production'
-    'client_id' => 'my_client_id',
-    'client_secret' => 'my_client_secret',
+    'prefix' => '123',
+    'client_id' => '00000',
+    'client_secret' => 'xxxxxxxxxxxxxxxxxxxxxxx',
     'url_development' => 'https://apibeta.bni-ecollection.com/',
     'url_production' => 'https://api.bni-ecollection.com/',
 ];

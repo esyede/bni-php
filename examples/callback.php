@@ -5,7 +5,7 @@ require __DIR__ . '/../vendor/autoload.php';
 use Esyede\BNI\Http\Request;
 use Esyede\BNI\Invoices\Callback;
 
-$config = require __DIR__ . '../config.php';
+$config = require __DIR__ . '/../config.php';
 
 $request = new Request($config);
 $callback = new Callback($request);
