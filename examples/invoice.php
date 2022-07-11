@@ -14,18 +14,13 @@ $request = new Request($config);
 | Contoh create invoice
 |--------------------------------------------------------------------------
 */
-
+$trxId = '12345677';
 $invoice = (new Invoice($request))
-    ->setClientId($config['client_id'])
+    ->setType('createBilling') // Penting! jenis transaksi
+    ->setClientId($configs['client_id'])
+    ->setTrxId($trxId)
     ->setTrxAmount(100000)
     ->setCustomerName('Asep Balon')
-    ->setCustomerEmail('asep.balon@gmail.com')
-    ->setCustomerPhone('08123123123')
-    ->setVirtualAccount('12300000112345678') // 12300000112345678 = '988' + '24975' + transactions.id
-    ->setTrxId('12345678')
-    ->setDatetimeExpired('now')
-    ->setDescription('Payment of transaction ABC')
-    ->setType('createBilling') // Penting! jenis transaksi
     ->run();
 
 print_r($invoice); exit;
@@ -36,17 +31,11 @@ print_r($invoice); exit;
 |--------------------------------------------------------------------------
 */
 
+$trxId = '12345677';
 $invoice = (new Invoice($request))
-    ->setClientId($config['client_id'])
-    ->setTrxAmount(100000)
-    ->setCustomerName('Asep Balon')
-    ->setCustomerEmail('asep.balon@gmail.com')
-    ->setCustomerPhone('08123123123')
-    ->setVirtualAccount('12300000112345678') // 12300000112345678 = '988' + '24975' + transactions.id
-    ->setTrxId('12345678')
-    ->setDatetimeExpired('now')
-    ->setDescription('Payment of transaction ABC')
     ->setType('inquiryBilling') // Penting! jenis transaksi
+    ->setClientId($configs['client_id'])
+    ->setTrxId($trxId)
     ->run();
 
 print_r($invoice); exit;
@@ -56,18 +45,13 @@ print_r($invoice); exit;
 | Contoh update invoice
 |--------------------------------------------------------------------------
 */
-
-$invoice = (new Invoice($request))
-    ->setClientId($config['client_id'])
+$trxId = '12345677';
+$invoice = (new Invoice($bniRequest))
+    ->setType('updateBilling') // Penting! jenis transaksi
+    ->setClientId($configs['client_id'])
     ->setTrxAmount(100000)
     ->setCustomerName('Asep Balon')
-    ->setCustomerEmail('asep.balon@gmail.com')
-    ->setCustomerPhone('08123123123')
-    ->setVirtualAccount('12300000112345678') // 12300000112345678 = '988' + '24975' + transactions.id
-    ->setTrxId('12345678')
-    ->setDatetimeExpired('now')
-    ->setDescription('Payment of transaction ABC')
-    ->setType('updateBilling')
+    ->setTrxId($trxId)
     ->run();
 
 print_r($invoice); exit;
