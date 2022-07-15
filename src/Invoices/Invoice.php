@@ -12,21 +12,6 @@ class Invoice
 {
     private $request;
     private $payloads = [];
-    private $types = [
-        'createBilling',
-        'createBillingsms',
-        'inquiryBilling',
-        'updateBilling',
-    ];
-
-    private $billingTypes = [
-        'open_payment' => 'o',
-        'fixed_payment' => 'c',
-        'installment' => 'i',
-        'minimum_payment' => 'm',
-        'open_minimum_payment' => 'n',
-        'open_maximum_payment' => 'x',
-    ];
 
     public function __construct(Request $request)
     {
@@ -41,10 +26,6 @@ class Invoice
      */
     public function setType($value)
     {
-        if (! in_array($value, $this->types)) {
-            throw new InvalidBNIException("The 'type' value is invalid.");
-        }
-
         $this->payloads['type'] = $value;
         return $this;
     }
@@ -89,11 +70,7 @@ class Invoice
      */
     public function setBillingType($value)
     {
-        if (! in_array($value, array_keys($this->billingTypes))) {
-            throw new InvalidBNIException("The 'billing_type' value is invalid.");
-        }
-
-        $this->payloads['billing_type'] = $this->billingTypes[$value];
+        $this->payloads['billing_type'] = $value;
         return $this;
     }
 
@@ -155,14 +132,8 @@ class Invoice
         }
 
         $value = (new DateTime($value, new DateTimeZone($timezone)))->format('Y-m-d H:i:s');
-
-        if (! is_string($value) || strlen($value) < 3) {
-            throw new InvalidBNIException(sprintf(
-                "The 'datetime_expired' value is invalid: %s", $value
-            ));
-        }
-
         $this->payloads['datetime_expired'] = $value;
+
         return $this;
     }
 
