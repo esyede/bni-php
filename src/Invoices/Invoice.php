@@ -53,18 +53,18 @@ class Invoice
     }
 
     /**
-     * Set transaction amount. Eg: 100000 (int)
+     * Set transaction amount. Eg: '100000' (string)
      *
      * @param innt $value
      */
     public function setTrxAmount($value)
     {
-        $this->payloads['trx_amount'] = ((int) $value < 1) ? 0 : (int) $value;
+        $this->payloads['trx_amount'] = $value;
         return $this;
     }
 
     /**
-     * Set billing type. Eg: 'createbilling' (string)
+     * Set billing type. Eg: 'createBilling' (string)
      *
      * @param string $value
      */
@@ -120,20 +120,14 @@ class Invoice
 
     /**
      * Set expired time. Will be converted to ISO8601 by this method.
-     * Eg: '2016-03-01T16:00:00+07:00' (string)
+     * Eg: '2016-03-01 16:00:00' (string)
      *
      * @param string $value
      * @param string $timezone
      */
     public function setDatetimeExpired($value, $timezone = 'Asia/Jakarta')
     {
-        if (! is_string($value) || strlen($value) < 3) {
-            throw new InvalidBNIException("The 'datetime_expired' value is invalid.");
-        }
-
-        $value = (new DateTime($value, new DateTimeZone($timezone)))->format('Y-m-d H:i:s');
         $this->payloads['datetime_expired'] = $value;
-
         return $this;
     }
 
