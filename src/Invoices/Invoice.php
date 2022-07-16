@@ -16,7 +16,6 @@ class Invoice
     public function __construct(Request $request)
     {
         $this->request = $request;
-        $this->setClientId($this->request->config('client_id'));
     }
 
     /**
