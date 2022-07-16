@@ -9,6 +9,7 @@ class Request
 {
     private static $config = [];
 
+    private $endpoint;
     private $method;
     private $payloads = [];
     private $options = [];
